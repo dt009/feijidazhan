@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>敌机</title>
+		<style type="text/css">
+			.box{
+				width:128px;
+				height: 128px;
+				background: url(img/enemy.png);
+				position: absolute;
+				left: 100px;
+			}
+		</style>
+	</head>		
+	<body>
+		<div id="con">
+			<div class="box"></div>
+		</div>
+		<script>
+			function yunDong(a){
+				var t1 = setInterval(function(){
+					var top = a.offsetTop;
+					top += 1;
+					var bH = document.documentElement.clientHeight || document.body.clientHeight;
+					if(top + a.offsetHeight >= bH){
+						a.style.display = "none";
+					}
+					a.style.top = top + "px";
+				},10)
+			}
+			window.onload = function (){
+				var t1 = setInterval(createDiJi,Math.ceil(Math.random()*3)*1100);
+			}
+			
+			function createDiJi(){
+				var box = document.createElement("div");
+				box.setAttribute('class','box');
+				box.style.left = Math.floor(Math.random()*1000) + "px";
+				document.getElementById('con').appendChild(box)
+				yunDong(box);
+			}
+		</script>
+	</body>
+</html>

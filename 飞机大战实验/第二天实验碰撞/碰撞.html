@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>碰撞</title>
+		<style type="text/css">
+			#box1{
+				width:128px;
+				height:128px;
+				background: url(img/enemy.png);
+				position: absolute;
+				top: 0;
+				left: 200px;
+			}
+			#box{
+				height: 107px;
+				width: 92px;
+				position: absolute;
+				left: 200px;
+				background:url(img/img1.png); 
+			}
+			#box2{
+				width:32px;
+				height:32px;
+				background: url(img/rocket.png);
+				position: absolute;
+				top: 550px;
+				left: 233px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="box1"></div>
+			<div id="box2"></div>
+		</div>
+		<script type="text/javascript">
+			function $(eid){
+				return document.getElementById(eid);
+			}
+			
+			function yunDong1(a,b){
+				t1 = setInterval(function(){
+					var top = a.offsetTop;
+					top += 1;
+					var str = b.currentStyle?b.currentStyle.top:getComputedStyle(b).top;
+					str = str.substring(0,str.length-2);
+					if( a.offsetTop + a.offsetHeight >= str  && a.offsetLeft + 32 <= b.offsetLeft && a.offsetLeft + 90 >= b.offsetLeft  ){
+						top = a.offsetTop + a.offsetHeight;
+						pengZhuang(a,b);
+						return;
+					}
+					var bH = document.documentElement.clientHeight || document.body.clientHeight;
+					if(top + a.offsetHeight >= bH){
+						a.style.display = "none";
+					}
+					//console.log("===>aaa"+top);
+					//console.log(b.style.top);
+					
+					//console.log("===>bbb"+str)
+					/*if(top + a.offsetHeight == str ){
+						a.style.display = "none";
+						b.style.display = "none";
+						clearInterval(t1);
+						console.log("------")
+						return;
+					}*/
+					a.style.top = top + "px";
+				},10)
+			}
+			
+			function yunDong2 (b,a){
+				t2 = setInterval(function(){
+					var top = b.offsetTop;
+					//console.log(top);
+					top -= 1;
+					if(top <= 0){
+						b.style.display ="none";
+					}
+					b.style.top = top + "px";
+				},10)
+			}
+			
+			window.onload = function (){
+				var t1 = null, t2 = null;
+				yunDong1($('box1'),$('box2'))
+				yunDong2($('box2'),$('box1'))
+			}
+			
+			function pengZhuang(a,b){
+				//console.log("********")
+				//a.style.background = "none";
+				b.style.display = "none";
+				clearInterval(t1);
+				clearInterval(t2);
+				tu(a);
+				
+				//创建
+			}
+			
+			function tu(a){
+				a.setAttribute('id','box');
+				var c = 1;
+				var t3 = setInterval(function(){
+					if(c > 10){
+						clearInterval(t3);
+						a.style.display = "none"
+					}
+					a.style.background = "url(img/img"+c+".png)";
+					c++;
+				},50)
+			}
+		</script>
+	</body>
+</html>

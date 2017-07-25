@@ -1,0 +1,25 @@
+*{
+	margin:0;
+	padding:0;
+}
+rocket{
+	height:32px;
+	width:32px;
+	display:block;
+	background: url(../img/rocket.png);
+	position:fixed;
+	top:500px;
+}
+plane{
+	height:110px;
+	width:176px;
+	position: absolute;
+	top:500px;
+	left:100px;
+	background:url(../img/plane.png) no-repeat -412px 0;
+}
+enemy{
+	display: block;
+	height:128px;
+	width:128px;
+}

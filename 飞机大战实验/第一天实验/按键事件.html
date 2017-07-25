@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>按键事件</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				height:110px;
+				width: 178px;
+				background: url(img/plane.png) no-repeat -412px 0 ;
+				position: fixed;
+				bottom: 10px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+		window.onload = function(){
+			//获取div标签
+			var box = document.getElementById('box');
+			var t1 = null;//储存定时器
+			var flag = true; //键盘按键没有按下为true，按下为false；
+			//定义事件
+			function dong1(){
+					//获取当前div的定位
+					var boxLeft = box.offsetLeft;
+					boxLeft += 5;
+					//获取当前窗口的大小
+					var bWidth = document.body.clientWidth || document.documentElement.clientWidth;
+					//console.log(bWidth);
+					//判断
+					if(boxLeft+box.offsetWidth >= bWidth){
+						boxLeft = bWidth - box.offsetWidth;
+					}
+					//console.log(boxLeft);
+					box.style.left = boxLeft + "px";
+			}
+			function dong2(){
+					//获取当前div的定位
+					var boxLeft = box.offsetLeft;
+					boxLeft -= 5;
+					//判断是否左边超出
+					if(boxLeft <= 0){
+						boxLeft = 0;
+					}
+					box.style.left = boxLeft + "px";
+			}
+			//键盘按下事件
+			document.onkeydown = function (e){
+				e = e || window.event;
+				
+				if(flag){
+					flag = false;
+					if(e.keyCode == 39){
+						setTimeout(tu1,300);
+						setTimeout(tu2,600)
+						t1 = setInterval(dong1,10);
+					}
+					if(e.keyCode == 37){
+						setTimeout(tu3,300);
+						setTimeout(tu4,600)
+						t1 = setInterval(dong2,10);
+					}
+				}
+				
+			}
+			//定义按键抬起事件
+			document.onkeyup = function (){
+				box.style.backgroundPositionX = "-421px";
+				clearInterval(t1);
+				flag = true;
+			}
+			
+			function tu1(){
+				console.log("-----");
+				box.style.backgroundPositionX = "-613px";
+			}
+			function tu2(){
+				box.style.backgroundPositionX = "-828px";
+			}
+			function tu3(){
+				box.style.backgroundPositionX = "-212px";
+			}
+			function tu4(){
+				box.style.backgroundPositionX = '-28px';
+			}
+		}
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

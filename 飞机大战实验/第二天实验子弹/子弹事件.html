@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>子弹事件</title>
+		<style type="text/css">
+			.rocket{
+				height: 32px;
+				width: 32px;
+				position: absolute;
+				top:500px;
+				left:400px;
+				background: url(img/rocket.png);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="rocket">
+			</div>
+		</div>
+		<script>
+			window.onload = function(){
+				var rocket = document.getElementsByClassName('rocket');
+				function yunDong (a){
+					var t1 = setInterval(function(){
+						var top = a.offsetTop;
+						//console.log(top);
+						top -= 10;
+						if(top <= 0){
+							a.style.display ="none";
+						}
+						a.style.top = top + "px";
+					},10)
+				}
+				document.onkeyup = function (e){
+					e = e || window.event;
+					if(e.keyCode == 65 || e.keyCode == 97){
+						createRocket();
+					}
+				}
+				function createRocket(){
+					var box = document.createElement("div");
+					box.setAttribute('class','rocket');
+					document.getElementById('box').appendChild(box);
+					yunDong(box);
+				}
+			}
+		</script>
+	</body>
+</html>

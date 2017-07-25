@@ -1,0 +1,99 @@
+*{
+	margin: 0;
+	padding:0;
+}
+#start{
+	width:600px;
+	height:600px;
+	background: url(../img/intro.jpg);
+	margin: 40px auto 0;
+}
+#box{
+	width:700px;
+	height:680px;
+	margin:5px auto 0;
+	background:url(../img/levelmap.jpg) no-repeat 0px -9320px;
+	position:relative;
+	overflow: hidden;
+}
+#plane{
+	height:110px;
+	width:178px;
+	background:url(../img/plane.png) no-repeat -412px 0;
+	position:absolute;
+	bottom: 0;
+	left:270px;
+	z-index: 2;
+}
+.enemy{
+	height:128px;
+	width:128px;
+	background: url(../img/enemy.png);
+	position:absolute;
+}
+div.zha{
+	height:92px;
+	width:104px;
+	background: url(../img/img1.png);
+}
+#box span{
+	display: block;
+	position:absolute;
+	height:32px;
+	width:32px;
+	background:url(../img/rocket.png);
+	top:570px;
+	z-index: 1;
+}
+
+#show span{
+	display: block;
+	font:18px/24px "微软雅黑";
+}
+.blood{
+	position: absolute;
+	top:480px;
+	left:110px;
+}
+.blood p{
+	height:30px;
+	width:120px;
+	font:24px/30px "微软雅黑";
+	font-weight: 900;
+	background: #999;
+	color:#f00;
+}
+.blood span{
+	color:#ff0;
+}
+.score{
+	position: absolute;
+	top: 580px;
+	left:110px;
+}
+.score p{
+	height: 30px;
+	width: 150px;
+	font: 24px/30px "微软雅黑";
+	background: #666;
+	color:#00f;
+	font-weight: 900;
+}
+.score span{
+	color:#0f0;
+}
+.taoyi{
+	position: absolute;
+	top:380px;
+	left:110px;
+}
+.taoyi p{
+	height:30px;
+	width:100px;
+	background: #ff0;
+	font: 28px/30px "微软雅黑";
+	font-weight: 900;
+}
+.taoyi span{
+	color:gary;
+}
